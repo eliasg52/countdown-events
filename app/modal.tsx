@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, TextInput } from 'react-native';
+import { Platform, Pressable, StyleSheet, TextInput } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
 export default function ModalScreen() {
@@ -9,7 +8,6 @@ export default function ModalScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Countdown title:</Text>
       <TextInput style={styles.inputTitle} />
-
       <View
         style={{
           flexDirection: 'row',
@@ -60,6 +58,17 @@ export default function ModalScreen() {
         </Text>
         <TextInput style={[styles.inputDate, { textAlign: 'left' }]} />
       </View>
+      <Pressable
+        onPress={() => console.log('asd')}
+        style={({ pressed }) => [
+          {
+            backgroundColor: pressed ? '#F57C00' : '#FFA726',
+          },
+          styles.buttonContainer,
+        ]}
+      >
+        <Text style={styles.plusButton}>CREATE EVENT</Text>
+      </Pressable>
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </View>
@@ -99,5 +108,18 @@ const styles = StyleSheet.create({
   },
   textDate: {
     fontSize: 18,
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 50,
+    borderRadius: 100,
+    width: '100%',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  plusButton: {
+    fontSize: 22,
+    fontWeight: 'bold',
   },
 });
