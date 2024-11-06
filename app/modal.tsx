@@ -51,7 +51,6 @@ export default function ModalScreen() {
           />
         </View>
       </View>
-
       <View style={{ marginTop: 10, alignSelf: 'flex-start', width: '100%' }}>
         <Text style={[styles.textDate, { marginBottom: 5 }]}>
           Location of event
